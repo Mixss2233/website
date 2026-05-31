@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 body {
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    font-family: 'Comic Neue', cursive, sans-serif;
     background: #F9F9F9;
     color: #1a2a3a;
     scroll-behavior: smooth;
