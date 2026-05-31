@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Detail Paket | Sumatra Happy Track Tour</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+            min-height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #f0f0f0;
+        }
+        :root {
+            --forest-gold: #D4A373;
+            --forest-dark: #0B2F1F;
+        }
+        /* Navbar dengan transparan dan blur */
+        .navbar {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(12px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 163, 115, 0.3);
+        }
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+        .logo {
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .logo i {
+            color: var(--forest-gold);
+            margin-right: 8px;
+        }
+        .back-home {
+            color: var(--forest-gold);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+            padding: 8px 16px;
+            border-radius: 40px;
+            background: rgba(0,0,0,0.4);
+        }
+        .back-home:hover {
+            color: white;
+            background: rgba(212, 163, 115, 0.3);
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        /* Card dengan efek glassmorphism (blur pada background teks) */
+        .detail-card {
+            background: rgba(20, 30, 25, 0.75);
+            backdrop-filter: blur(12px);
+            border-radius: 32px;
+            margin: 48px 0;
+            padding: 40px;
+            box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(212, 163, 115, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .detail-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 30px 45px -12px black;
+            background: rgba(20, 30, 25, 0.85);
+        }
+        .detail-header {
+            border-bottom: 2px solid var(--forest-gold);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .detail-header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            color: white;
+        }
+        .detail-header .price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--forest-gold);
+        }
+        .detail-header .price small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #ddd;
+        }
+        .detail-section {
+            margin-bottom: 32px;
+        }
+        .detail-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--forest-gold);
+        }
+        .detail-section h3 i {
+            color: var(--forest-gold);
+        }
+        .detail-section p, .detail-section ul {
+            color: #f5f5f5;
+            margin-left: 28px;
+        }
+        .detail-section ul {
+            list-style: none;
+        }
+        .detail-section ul li {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .detail-section ul li i {
+            color: var(--forest-gold);
+            width: 20px;
+        }
+        .btn-group {
+            margin-top: 32px;
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: var(--forest-gold);
+            color: #1E2A2F;
+            padding: 12px 28px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-primary:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            border: 2px solid var(--forest-gold);
+            background: transparent;
+            color: var(--forest-gold);
+            padding: 12px 28px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        .btn-outline:hover {
+            background: var(--forest-gold);
+            color: #1E2A2F;
+        }
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #ccc;
+            border-top: 1px solid rgba(212, 163, 115, 0.3);
+            margin-top: 40px;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+        }
+        @media (max-width: 768px) {
+            .detail-card {
+                padding: 24px;
+            }
+            .detail-header h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-flex">
+            <a href="index.html" class="logo"><i class="fas fa-tree"></i> Sumatra Happy Track</a>
+            <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="detailContent" class="detail-card">
+            <div style="text-align: center; padding: 40px;">Memuat detail paket...</div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Sumatra Happy Track Tour - Ethical Jungle Trekking Bukit Lawang</p>
+    </footer>
+
+    <script>
+        // Data paket (sama seperti sebelumnya)
+        const packagesData = {
+            "3-jam": {
+                title: "🌿 3 Jam Trek",
+                price: "€55",
+                duration: "3 jam",
+                description: "Trekking singkat yang cocok untuk pemula atau Anda yang memiliki waktu terbatas. Anda akan diajak berjalan menyusuri tepi hutan, melihat satwa liar, dan menikmati keindahan alam Bukit Lawang.",
+                includes: ["Pemandu lokal berlisensi", "Izin masuk Taman Nasional", "Makan siang & buah-buahan", "Air minum", "Asosiasi guide"],
+                highlights: ["Spot terbaik melihat orangutan", "Jalur mudah dan aman", "Pemandu berpengalaman (Guide Ed)"]
+            },
+            "1-hari": {
+                title: "🌞 1 Hari Trek",
+                price: "€70",
+                duration: "6-7 jam",
+                description: "Trekking seharian penuh untuk eksplorasi lebih dalam. Anda akan masuk ke hutan primer, berkesempatan melihat orangutan, monyet, burung rangkong, dan flora endemik.",
+                includes: ["Pemandu lokal", "Izin TNGL", "Makan siang, buah, air minum", "Snack", "Asosiasi guide"],
+                highlights: ["Jalur menantang tapi aman", "Peluang melihat orangutan liar", "Pemandangan sungai dan air terjun"]
+            },
+            "2-hari": {
+                title: "🏕️ 2 Hari 1 Malam Camping",
+                price: "€120",
+                duration: "2 hari, 1 malam",
+                description: "Berkemah semalam di dalam hutan, menikmati suasana malam di tengah alam liar. Termasuk kegiatan arung jeram (tubing) kembali ke desa.",
+                includes: ["Pemandu & porter", "Izin & asosiasi", "3 kali makan (malam, pagi, siang)", "Tenda & perlengkapan camping", "Arung jeram (tubing)"],
+                highlights: ["Pengalaman camping di hutan", "Makan malam di tepi sungai", "Trekking 2 hari yang seru"]
+            },
+            "3-hari": {
+                title: "⛺ 3 Hari 2 Malam Camping",
+                price: "€170",
+                duration: "3 hari, 2 malam",
+                description: "Eksplorasi lebih jauh ke zona inti Taman Nasional. Camping 2 malam, trekking melewati berbagai medan, spot foto terbaik.",
+                includes: ["Pemandu & porter", "Izin lengkap", "Semua makan (2x pagi, 2x siang, 2x malam)", "Tenda & matras", "Tubing kembali"],
+                highlights: ["Jalur jarak jauh", "Melihat satwa langka", "Mata air panas alami"]
+            },
+            "4-hari": {
+                title: "🏞️ 4 Hari 3 Malam Ekspedisi",
+                price: "€250",
+                duration: "4 hari, 3 malam",
+                description: "Petualangan ekstensif ke wilayah Gunung Leuser. Trekking melewati hutan lebat, sungai, dan perkemahan di lokasi terpencil.",
+                includes: ["Semua fasilitas trekking", "Peralatan camping", "Makan full board", "Pemandu senior", "Porter"],
+                highlights: ["Satwa endemik langka", "Air terjun tersembunyi", "Pengalaman konservasi"]
+            },
+            "5-hari": {
+                title: "🌲 5 Hari 4 Malam Petualangan",
+                price: "€320",
+                duration: "5 hari, 4 malam",
+                description: "Trekking jarak jauh dengan eksplorasi hutan primer dan sekunder. Cocok untuk pencinta alam sejati.",
+                includes: ["Pemandu & porter", "Perlengkapan lengkap", "Makan & minum", "Dokumentasi", "Sertifikat"],
+                highlights: ["Hutan paling alami", "Camping di ketinggian", "Spot foto eksotis"]
+            },
+            "6-hari": {
+                title: "🌳 6 Hari 5 Malam Jelajah",
+                price: "€400",
+                duration: "6 hari, 5 malam",
+                description: "Perjalanan panjang menyusuri Gunung Leuser, singgah di desa lokal, dan ikut serta dalam kegiatan konservasi.",
+                includes: ["Semua fasilitas", "Kunjungan desa", "Peralatan camping profesional", "Makan & minum", "Flying fox (jika memungkinkan)"],
+                highlights: ["Integrasi budaya lokal", "Restorasi habitat", "Ekspedisi terbatas"]
+            },
+            "7-hari": {
+                title: "🏔️ 7 Hari 6 Malam Ekspedisi Puncak",
+                price: "€500",
+                duration: "7 hari, 6 malam",
+                description: "Ekspedisi penuh ke puncak tertinggi di area Leuser. Trekking berat dengan pemandangan spektakuler.",
+                includes: ["Pemandu ahli", "Porter profesional", "Semua kebutuhan", "Sertifikat ekspedisi", "Dokumentasi profesional"],
+                highlights: ["Puncak panorama", "Camping di tepi danau", "Pengalaman tak terlupakan"]
+            },
+            "kutacane": {
+                title: "🚩 7 Hari Ekspedisi Kutacane (Aceh)",
+                price: "€700",
+                duration: "7 hari, 6 malam",
+                description: "Perjalanan ekstrem dari Bukit Lawang melintasi hutan Aceh Tenggara menuju Kutacane. Rute lintas batas, budaya lokal unik.",
+                includes: ["Pemandu khusus lintas batas", "Transportasi titik akhir", "Semua perlengkapan", "Makan & minum", "Sertifikat lintas hutan"],
+                highlights: ["Budaya Gayo", "Hutan perawan", "Rute eksklusif"]
+            }
+        };
+
+        const urlParams = new URLSearchParams(window.location.search);
+        let paketId = urlParams.get('paket');
+        if (!paketId || !packagesData[paketId]) {
+            paketId = "3-jam";
+        }
+
+        const data = packagesData[paketId];
+        const detailDiv = document.getElementById('detailContent');
+
+        function renderDetail() {
+            const includesHtml = data.includes.map(item => `<li><i class="fas fa-check-circle"></i> ${item}</li>`).join('');
+            const highlightsHtml = data.highlights.map(item => `<li><i class="fas fa-star"></i> ${item}</li>`).join('');
+
+            const html = `
+                <div class="detail-header">
+                    <h1>${data.title}</h1>
+                    <div class="price">${data.price} <small>/ orang</small></div>
+                    <p style="margin-top: 8px;"><i class="fas fa-clock"></i> Durasi: ${data.duration}</p>
+                </div>
+                <div class="detail-section">
+                    <h3><i class="fas fa-info-circle"></i> Tentang Paket</h3>
+                    <p>${data.description}</p>
+                </div>
+                <div class="detail-section">
+                    <h3><i class="fas fa-check-double"></i> Yang Termasuk</h3>
+                    <ul>${includesHtml}</ul>
+                </div>
+                <div class="detail-section">
+                    <h3><i class="fas fa-camera"></i> Keunggulan</h3>
+                    <ul>${highlightsHtml}</ul>
+                </div>
+                <div class="btn-group">
+                    <a href="https://wa.me/6282249581766?text=Saya%20tertarik%20paket%20${encodeURIComponent(data.title)}%20%28${data.price}%29" class="btn-primary" target="_blank"><i class="fab fa-whatsapp"></i> Pesan via WhatsApp</a>
+                    <a href="index.html" class="btn-outline"><i class="fas fa-arrow-left"></i> Kembali ke Semua Paket</a>
+                </div>
+            `;
+            detailDiv.innerHTML = html;
+        }
+
+        renderDetail();
+    </script>
+</body>
+</html>

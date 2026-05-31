@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Transportasi & Share Taxi | Sumatra Happy Track Tour</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+            background: #FDF8ED;
+            color: #1E2A2F;
+            scroll-behavior: smooth;
+        }
+        :root {
+            --forest-dark: #0B2F1F;
+            --forest-medium: #1E4A2F;
+            --forest-gold: #D4A373;
+            --forest-gold-dark: #B47C48;
+            --cream: #FDF8ED;
+        }
+        /* Navbar */
+        .navbar {
+            background: var(--forest-dark);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+        .logo {
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .logo i {
+            color: var(--forest-gold);
+            margin-right: 8px;
+        }
+        .logo:hover {
+            opacity: 0.9;
+        }
+        .back-home {
+            color: var(--forest-gold);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+            padding: 8px 16px;
+            border-radius: 40px;
+            background: rgba(212,163,115,0.1);
+        }
+        .back-home:hover {
+            color: white;
+            background: rgba(212,163,115,0.3);
+        }
+        /* Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        /* Hero section */
+        .hero-transport {
+            background: linear-gradient(135deg, var(--forest-dark), #1E3A2A);
+            color: white;
+            padding: 60px 0 50px;
+            text-align: center;
+            border-radius: 0 0 48px 48px;
+            margin-bottom: 48px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-transport::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212,163,115,0.1) 0%, transparent 70%);
+            animation: rotateGlow 20s linear infinite;
+        }
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .hero-transport h1 {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-transport h1 i {
+            color: var(--forest-gold);
+            margin-right: 12px;
+        }
+        .hero-transport p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        /* Card style */
+        .transport-card {
+            background: white;
+            border-radius: 32px;
+            padding: 32px;
+            margin-bottom: 48px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+            border: 1px solid #eef2ff;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .transport-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 40px -12px rgba(11,47,31,0.2);
+            border-color: rgba(212,163,115,0.3);
+        }
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--forest-dark);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .section-title i {
+            color: var(--forest-gold);
+            font-size: 2rem;
+        }
+        .badge {
+            background: var(--forest-gold);
+            color: var(--forest-dark);
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        /* Tabel */
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 20px;
+        }
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        .price-table th, .price-table td {
+            padding: 14px 12px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .price-table th {
+            background: #f8fafc;
+            color: var(--forest-dark);
+            font-weight: 700;
+            border-bottom: 2px solid var(--forest-gold);
+        }
+        .price-table tr:hover {
+            background: rgba(212,163,115,0.05);
+        }
+        .price-table .destination {
+            font-weight: 600;
+            color: var(--forest-dark);
+        }
+        .price-table .price {
+            font-weight: 700;
+            color: var(--forest-gold-dark);
+        }
+        .price-table .time {
+            font-family: monospace;
+            font-weight: 500;
+        }
+        .note {
+            background: #fef3c7;
+            padding: 16px 20px;
+            border-radius: 24px;
+            margin-top: 24px;
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+        .note i {
+            margin-right: 8px;
+            color: #d97706;
+        }
+        /* Form styling */
+        .booking-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 16px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .form-group label {
+            font-weight: 600;
+            color: var(--forest-dark);
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+        }
+        .form-group label i {
+            margin-right: 6px;
+            color: var(--forest-gold);
+        }
+        .form-group input, .form-group select {
+            padding: 14px 18px;
+            border-radius: 32px;
+            border: 1.5px solid #e2e8f0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            background: white;
+        }
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--forest-gold);
+            box-shadow: 0 0 0 3px rgba(212,163,115,0.2);
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, var(--forest-dark), var(--forest-medium));
+            color: white;
+            padding: 14px 28px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+            width: 100%;
+            margin-top: 16px;
+        }
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(11,47,31,0.4);
+            background: linear-gradient(135deg, var(--forest-medium), var(--forest-dark));
+        }
+        .btn-submit i {
+            font-size: 1.2rem;
+        }
+        .btn-wa {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 24px;
+            transition: 0.2s;
+        }
+        .btn-wa:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37,211,102,0.3);
+        }
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #5A6E6F;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 40px;
+        }
+        @media (max-width: 768px) {
+            .hero-transport h1 { font-size: 1.8rem; }
+            .price-table th, .price-table td { padding: 10px 8px; font-size: 0.85rem; }
+            .section-title { font-size: 1.4rem; }
+            .transport-card { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-flex">
+            <a href="index.html" class="logo"><i class="fas fa-tree"></i> Sumatra Happy Track</a>
+            <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
+        </div>
+    </div>
+
+    <div class="hero-transport">
+        <div class="container">
+            <h1><i class="fas fa-car-side"></i> Transportasi & Share Taxi</h1>
+            <p>Layanan transportasi antar kota di Sumatra Utara & sekitarnya. Harga per orang, mobil nyaman, driver berpengalaman.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Tabel Share Taxi -->
+        <div class="transport-card">
+            <div class="section-title">
+                <i class="fas fa-people-arrows"></i>
+                <span>Share Taxi – Rute & Harga</span>
+                <span class="badge">Setiap hari</span>
+            </div>
+            <div class="table-wrapper">
+                <table class="price-table">
+                    <thead>
+                        <tr>
+                            <th>Dari (From)</th>
+                            <th>Tujuan (To)</th>
+                            <th>Harga / Orang</th>
+                            <th>Jam Keberangkatan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="destination">Medan / Airport</td><td>Berastagi</td><td class="price">Rp 230.000</td><td class="time">10.00 AM</td></tr>
+                        <tr><td class="destination">Medan / Airport</td><td>Bukit Lawang</td><td class="price">Rp 270.000</td><td class="time">10.00 AM</td></tr>
+                        <tr><td class="destination">Medan / Airport</td><td>Singkil</td><td class="price">Rp 550.000</td><td class="time">10.00 AM</td></tr>
+                        <tr><td class="destination">Medan / Airport</td><td>Toba (Parapat)</td><td class="price">Rp 550.000</td><td class="time">10.00 AM</td></tr>
+                        <tr><td class="destination">Medan / Airport</td><td>Banda Aceh</td><td class="price">Rp 650.000</td><td class="time">10.00 AM</td></tr>
+                        <tr><td class="destination">Medan / Airport</td><td>Ketambe</td><td class="price">Rp 650.000</td><td class="time">10.00 AM</td></tr>
+                        <tr><td class="destination">Medan / Airport</td><td>Sibolga</td><td class="price">Rp 450.000</td><td class="time">10.00 AM</td></tr>
+                        <tr><td class="destination">Medan / Airport</td><td>Padang</td><td class="price">Rp 700.000</td><td class="time">21.00 PM</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="note">
+                <i class="fas fa-info-circle"></i> Harga sudah termasuk bahan bakar, driver berpengalaman, dan asuransi perjalanan. Harga dapat berubah sewaktu-waktu. Untuk rute lain atau private car, silakan hubungi kami.
+            </div>
+            <a href="https://wa.me/6282249581766?text=Saya%20mau%20tanya%20transportasi" class="btn-wa" target="_blank"><i class="fab fa-whatsapp"></i> Tanya via WhatsApp</a>
+        </div>
+
+        <!-- Form Pemesanan Instan -->
+        <div class="transport-card">
+            <div class="section-title">
+                <i class="fas fa-bolt"></i>
+                <span>Booking Transportasi Instan</span>
+                <span class="badge">Fast response</span>
+            </div>
+            <form id="bookingTransportForm" class="booking-form">
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> Nama Lengkap</label>
+                    <input type="text" id="transName" placeholder="Contoh: John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-map-marker-alt"></i> Lokasi Penjemputan</label>
+                    <input type="text" id="transPickup" placeholder="Medan Airport / Hotel ..." required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-location-dot"></i> Tujuan</label>
+                    <select id="transDestination" required>
+                        <option value="">-- Pilih Tujuan --</option>
+                        <option value="Berastagi">Berastagi</option>
+                        <option value="Bukit Lawang">Bukit Lawang</option>
+                        <option value="Singkil">Singkil</option>
+                        <option value="Toba (Parapat)">Toba (Parapat)</option>
+                        <option value="Banda Aceh">Banda Aceh</option>
+                        <option value="Ketambe">Ketambe</option>
+                        <option value="Sibolga">Sibolga</option>
+                        <option value="Padang">Padang</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-clock"></i> Jam Penjemputan</label>
+                    <input type="time" id="transTime" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-users"></i> Jumlah Penumpang</label>
+                    <input type="number" id="transPassengers" min="1" value="1" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-calendar-alt"></i> Tanggal</label>
+                    <input type="date" id="transDate" required>
+                </div>
+                <button type="submit" class="btn-submit"><i class="fab fa-whatsapp"></i> Kirim via WhatsApp</button>
+            </form>
+            <div class="note" style="margin-top: 16px;">
+                <i class="fas fa-shield-alt"></i> Data Anda akan dikirim ke WhatsApp kami. Tim kami akan menghubungi Anda untuk konfirmasi.
+            </div>
+        </div>
+
+        <!-- Keunggulan Driver Bagus -->
+        <div class="transport-card">
+            <div class="section-title">
+                <i class="fas fa-star"></i>
+                <span>Keunggulan Driver Bagus</span>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+                <div><i class="fas fa-check-circle" style="color: var(--forest-gold);"></i> Bahasa Inggris lancar & ramah</div>
+                <div><i class="fas fa-check-circle" style="color: var(--forest-gold);"></i> Mengemudi aman & berpengalaman</div>
+                <div><i class="fas fa-check-circle" style="color: var(--forest-gold);"></i> Bisa berhenti di spot foto & perkebunan kopi</div>
+                <div><i class="fas fa-check-circle" style="color: var(--forest-gold);"></i> Rekomendasi restoran lokal terbaik</div>
+                <div><i class="fas fa-check-circle" style="color: var(--forest-gold);"></i> Mobil bersih, AC, dan nyaman</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Sumatra Happy Track Tour - Transportasi & Share Taxi | WhatsApp: +62 822-4958-1766</p>
+    </footer>
+
+    <script>
+        // Form handling untuk booking transportasi
+        const form = document.getElementById('bookingTransportForm');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('transName').value;
+                const pickup = document.getElementById('transPickup').value;
+                const destination = document.getElementById('transDestination').value;
+                const time = document.getElementById('transTime').value;
+                const passengers = document.getElementById('transPassengers').value;
+                const date = document.getElementById('transDate').value;
+
+                if (!name || !pickup || !destination || !time || !passengers || !date) {
+                    alert('Mohon isi semua field yang wajib.');
+                    return;
+                }
+
+                let message = `*BOOKING TRANSPORTASI - Sumatra Happy Track*%0A`;
+                message += `👤 Nama: ${name}%0A`;
+                message += `📍 Penjemputan: ${pickup}%0A`;
+                message += `🏁 Tujuan: ${destination}%0A`;
+                message += `⏰ Jam: ${time}%0A`;
+                message += `👥 Jumlah: ${passengers} orang%0A`;
+                message += `📅 Tanggal: ${date}%0A`;
+                message += `%0A_Pesan dikirim dari halaman Transportasi._`;
+
+                const waNumber = '6282249581766';
+                const waLink = `https://wa.me/${waNumber}?text=${message}`;
+                window.open(waLink, '_blank');
+                alert('Terima kasih! Anda akan diarahkan ke WhatsApp untuk mengirim pesan.');
+            });
+        }
+    </script>
+</body>
+</html>

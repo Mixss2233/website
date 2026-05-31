@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Sumatra Happy Track - Guest House & Jungle Trekking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #f0f0f0;
+        }
+        :root {
+            --forest-gold: #D4A373;
+            --forest-dark: #0B2F1F;
+            --glass-bg: rgba(20, 30, 25, 0.7);
+        }
+        /* Navbar */
+        .navbar {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(12px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 163, 115, 0.3);
+        }
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+        .logo {
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .logo i {
+            color: var(--forest-gold);
+            margin-right: 8px;
+        }
+        .back-home {
+            color: var(--forest-gold);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+            padding: 8px 16px;
+            border-radius: 40px;
+            background: rgba(0,0,0,0.4);
+        }
+        .back-home:hover {
+            color: white;
+            background: rgba(212,163,115,0.3);
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        /* Hero Section dengan overlay lebih ringan agar teks terbaca */
+        .hero-hotel {
+            text-align: center;
+            padding: 80px 0 60px;
+            margin-bottom: 48px;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(4px);
+            border-radius: 0 0 48px 48px;
+        }
+        .hero-hotel h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+        .hero-hotel h1 i {
+            color: var(--forest-gold);
+            margin-right: 12px;
+        }
+        .hero-hotel p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        .rating-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(212,163,115,0.2);
+            backdrop-filter: blur(8px);
+            padding: 8px 24px;
+            border-radius: 60px;
+            margin-top: 24px;
+            font-size: 0.9rem;
+        }
+        /* Card utama dengan glassmorphism */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border-radius: 32px;
+            padding: 32px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(212,163,115,0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .glass-card:hover {
+            transform: translateY(-6px);
+            background: rgba(20, 30, 25, 0.85);
+            box-shadow: 0 20px 35px -12px black;
+            border-color: var(--forest-gold);
+        }
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--forest-gold);
+        }
+        .section-title i {
+            font-size: 1.8rem;
+        }
+        /* Grid fasilitas, aktivitas, kamar */
+        .grid-3cols {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+        .feature-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 20px;
+            text-align: center;
+            transition: 0.2s;
+        }
+        .feature-item i {
+            font-size: 2rem;
+            color: var(--forest-gold);
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+        .feature-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        .feature-item p {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+        .feature-item:hover {
+            background: rgba(212,163,115,0.2);
+            transform: translateY(-4px);
+        }
+        .room-card {
+            background: rgba(255,255,255,0.08);
+            border-radius: 24px;
+            padding: 20px;
+            text-align: center;
+        }
+        .room-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--forest-gold);
+        }
+        .room-price {
+            font-weight: 700;
+            margin-top: 12px;
+            display: inline-block;
+            background: rgba(0,0,0,0.5);
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+        }
+        .review-card {
+            background: rgba(255,255,255,0.08);
+            border-radius: 24px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--forest-gold);
+        }
+        .review-stars {
+            color: var(--forest-gold);
+            margin-bottom: 8px;
+        }
+        .btn-booking, .btn-wa {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+            margin-right: 12px;
+            margin-top: 8px;
+        }
+        .btn-booking {
+            background: #003580;
+            color: white;
+        }
+        .btn-booking:hover {
+            background: #002259;
+            transform: translateY(-2px);
+        }
+        .btn-wa {
+            background: #25D366;
+            color: white;
+        }
+        .btn-wa:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+        }
+        .map-placeholder {
+            background: rgba(0,0,0,0.5);
+            height: 220px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 16px;
+            font-size: 0.9rem;
+        }
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid rgba(212,163,115,0.3);
+            margin-top: 60px;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(4px);
+        }
+        @media (max-width: 768px) {
+            .hero-hotel h1 { font-size: 1.8rem; }
+            .section-title { font-size: 1.4rem; }
+            .grid-3cols { gap: 16px; }
+            .glass-card { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-flex">
+            <a href="index.html" class="logo"><i class="fas fa-tree"></i> Sumatra Happy Track</a>
+            <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
+        </div>
+    </div>
+
+    <div class="hero-hotel">
+        <div class="container">
+            <h1><i class="fas fa-hotel"></i> Sumatra Happy Track Tour<br>Guest House & Jungle Trekking</h1>
+            <p>Comfortable Stay & Authentic Jungle Experience di Bukit Lawang</p>
+            <div class="rating-badge">
+                <i class="fas fa-star"></i> 8.0/10 (Booking.com)
+                <span>•</span> <i class="fas fa-map-marker-alt"></i> Lokasi 10/10
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Tentang Guest House -->
+        <div class="glass-card">
+            <div class="section-title"><i class="fas fa-info-circle"></i> Tentang Guest House</div>
+            <p style="margin-bottom: 16px; line-height: 1.6;">Sumatra Happy Track Tour Guest House & Jungle Trekking terletak di Bukit Lawang, menawarkan taman, teras, WiFi gratis, dan parkir pribadi gratis. Lokasi strategis, hanya beberapa menit dari pintu masuk Taman Nasional Gunung Leuser. Cocok untuk wisatawan yang ingin merasakan pengalaman menginap yang nyaman sekaligus dekat dengan alam.</p>
+            <p><strong><i class="fas fa-map-marker-alt"></i> Alamat:</strong> Jl. Orangutan, 20774 Bukit Lawang, Sumatera Utara</p>
+            <p><strong><i class="fas fa-plane"></i> Bandara terdekat:</strong> Bandara Internasional Kualanamu (110 km)</p>
+            <div style="margin-top: 20px;">
+                <a href="https://www.booking.com/hotel/id/sumatera-happy-track-tour-guest-house-kabupaten-langkat.id.html" class="btn-booking" target="_blank"><i class="fas fa-external-link-alt"></i> Pesan di Booking.com</a>
+                <a href="https://wa.me/6282249581766?text=Saya%20tertarik%20menginap%20di%20Sumatra%20Happy%20Track%20Guest%20House" class="btn-wa" target="_blank"><i class="fab fa-whatsapp"></i> Chat via WhatsApp</a>
+            </div>
+        </div>
+
+        <!-- Fasilitas Unggulan -->
+        <div class="glass-card">
+            <div class="section-title"><i class="fas fa-wifi"></i> Fasilitas Unggulan</div>
+            <div class="grid-3cols">
+                <div class="feature-item"><i class="fas fa-wifi"></i><h4>Free WiFi</h4><p>Koneksi internet cepat di seluruh area</p></div>
+                <div class="feature-item"><i class="fas fa-parking"></i><h4>Free Parking</h4><p>Parkir pribadi gratis tanpa reservasi</p></div>
+                <div class="feature-item"><i class="fas fa-smoking-ban"></i><h4>Non-smoking Rooms</h4><p>Semua kamar bebas rokok</p></div>
+                <div class="feature-item"><i class="fas fa-users"></i><h4>Family Rooms</h4><p>Kamar luas untuk keluarga</p></div>
+                <div class="feature-item"><i class="fas fa-paw"></i><h4>Pets Allowed</h4><p>Hewan peliharaan diperbolehkan (gratis)</p></div>
+                <div class="feature-item"><i class="fas fa-leaf"></i><h4>Garden & Terrace</h4><p>Taman dan teras untuk bersantai</p></div>
+            </div>
+            <div class="note" style="background: rgba(212,163,115,0.2); padding: 14px 20px; border-radius: 24px; margin-top: 24px; text-align: center;">
+                <i class="fas fa-clock"></i> Check-in: 13:00 - 23:00 | Check-out: 11:00 - 12:00
+            </div>
+        </div>
+
+        <!-- Tipe Kamar -->
+        <div class="glass-card">
+            <div class="section-title"><i class="fas fa-bed"></i> Tipe Kamar</div>
+            <div class="grid-3cols">
+                <div class="room-card">
+                    <h4>🌿 Family Room</h4>
+                    <p>1 kamar tidur, 1 kamar mandi, teras pribadi, AC, pemandangan gunung</p>
+                    <span class="room-price">Lihat harga terbaik di Booking.com</span>
+                </div>
+                <div class="room-card">
+                    <h4>🌞 Deluxe Double Room</h4>
+                    <p>Kamar dengan balkon, AC, pemandangan taman, cocok untuk 2 orang</p>
+                    <span class="room-price">Cocok untuk 2 dewasa + 1 anak</span>
+                </div>
+                <div class="room-card">
+                    <h4>🏕️ Standard Room</h4>
+                    <p>Kamar sederhana dengan fasilitas lengkap, ekonomis untuk backpacker</p>
+                    <span class="room-price">Harga ekonomis</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Aktivitas & Pengalaman -->
+        <div class="glass-card">
+            <div class="section-title"><i class="fas fa-hiking"></i> Aktivitas & Pengalaman</div>
+            <div class="grid-3cols">
+                <div class="feature-item"><i class="fas fa-monkey"></i><h4>Orangutan Trekking</h4><p>Trekking melihat orangutan liar dengan guide lokal</p></div>
+                <div class="feature-item"><i class="fas fa-tree"></i><h4>Rainforest Adventure</h4><p>Jelajahi hutan hujan tropis Gunung Leuser</p></div>
+                <div class="feature-item"><i class="fas fa-water"></i><h4>River Tubing</h4><p>Arung jeram santai di sungai Bahorok</p></div>
+                <div class="feature-item"><i class="fas fa-waterfall"></i><h4>Waterfall Visit</h4><p>Kunjungan ke air terjun tersembunyi</p></div>
+            </div>
+        </div>
+
+        <!-- Ulasan Tamu -->
+        <div class="glass-card">
+            <div class="section-title"><i class="fas fa-star"></i> Ulasan Tamu (Booking.com)</div>
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p>"Sehr guter Preis, gute Lage und freundliches Personal"</p>
+                <small>— Ruth, Jerman</small>
+                <div style="margin-top: 8px;"><strong>Skor:</strong> Lokasi 10.0 | Staf 10 | Nilai 8.0</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">★★★★½</div>
+                <p>"Nyaman, dekat dengan titik trekking, staf ramah dan membantu."</p>
+                <small>— Wisatawan Indonesia</small>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p>"Great location and very kind staff. The jungle trekking was amazing!"</p>
+                <small>— Michael, Australia</small>
+            </div>
+        </div>
+
+        <!-- Lokasi & Peta -->
+        <div class="glass-card">
+            <div class="section-title"><i class="fas fa-map-marker-alt"></i> Lokasi Strategis</div>
+            <p>Berada di jantung Bukit Lawang, guest house ini dekat dengan berbagai restoran, kafe, dan pintu masuk trekking. Hanya beberapa menit berjalan kaki dari Sungai Bahorok.</p>
+            <div class="map-placeholder">
+                <i class="fas fa-map" style="margin-right: 8px;"></i> Jl. Orangutan, Bukit Lawang (Google Maps)
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="glass-card" style="text-align: center;">
+            <div class="section-title" style="justify-content: center;"><i class="fas fa-bolt"></i> Booking Instan</div>
+            <p style="margin-bottom: 16px;">Pesan langsung melalui WhatsApp atau klik tombol di bawah untuk lihat ketersediaan di Booking.com.</p>
+            <a href="https://wa.me/6282249581766?text=Saya%20tertarik%20menginap%20di%20Sumatra%20Happy%20Track%20Guest%20House" class="btn-wa" target="_blank"><i class="fab fa-whatsapp"></i> Chat via WhatsApp</a>
+            <a href="https://www.booking.com/hotel/id/sumatera-happy-track-tour-guest-house-kabupaten-langkat.id.html" class="btn-booking" target="_blank"><i class="fas fa-external-link-alt"></i> Cek di Booking.com</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Sumatra Happy Track Tour - Guest House & Jungle Trekking | WhatsApp: +62 822-4958-1766</p>
+    </footer>
+</body>
+</html>
