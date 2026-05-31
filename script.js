@@ -145,41 +145,6 @@ if (lightbox) {
     });
 }
 
-// ========== ASISTEN MONYET ==========
-const monkey = document.getElementById('monkeyAssistant');
-const bubble = document.getElementById('monkeyBubble');
-let bubbleTimeout;
-
-if (monkey) {
-    monkey.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (bubble) bubble.classList.add('show');
-        if (bubbleTimeout) clearTimeout(bubbleTimeout);
-        bubbleTimeout = setTimeout(() => {
-            if (bubble) bubble.classList.remove('show');
-        }, 4000);
-    });
-}
-
-document.addEventListener('click', (e) => {
-    if (monkey && !monkey.contains(e.target) && bubble) {
-        bubble.classList.remove('show');
-    }
-});
-
-// Sapaan otomatis pertama kali
-setTimeout(() => {
-    if (!localStorage.getItem('monkeyGreeted') && bubble) {
-        bubble.classList.add('show');
-        bubble.innerHTML = "Halo! Saya Utan, asisten virtual Anda 🦧<br>Klik saya untuk info trekking!";
-        setTimeout(() => {
-            if (bubble) bubble.classList.remove('show');
-            bubble.innerHTML = ""; // reset
-        }, 5000);
-        localStorage.setItem('monkeyGreeted', 'true');
-    }
-}, 1500);
-
 // ========== HERO SLIDESHOW CLEAN ==========
 const slides = document.querySelectorAll('.slide');
 const prevBtn = document.getElementById('slidePrev');
